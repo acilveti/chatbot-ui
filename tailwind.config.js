@@ -7,12 +7,16 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      maxHeight: {
+        auth: '60rem',
+      },
+    },
   },
   variants: {
     extend: {
-      visibility: ["group-hover"],
+      visibility: ['group-hover'],
     },
-   },
+  },
   plugins: [require('@tailwindcss/typography')],
 };

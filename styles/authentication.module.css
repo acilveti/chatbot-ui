@@ -1,3 +1,31 @@
-.authenticationBackground {
-  @apply bg-[#517bcf];
+.Screen {
+  @apply flex h-screen w-screen items-center justify-center bg-white;
+}
+
+.AuthenticationContainer {
+  @apply flex h-full max-h-auth w-1/2 max-w-xl flex-col items-center justify-center gap-10 border-4 bg-white p-10;
+}
+
+.Titles {
+  @apply flex w-full flex-col gap-2;
+}
+
+.FormContainer {
+  @apply flex w-full flex-col items-center justify-center gap-5;
+}
+
+.Input {
+  @apply flex w-full flex-col gap-2 border-b-4 bg-transparent;
+}
+
+.ButtonsContainer {
+  @apply flex w-full flex-col gap-5;
+}
+
+.LogButton {
+  @apply flex w-full items-center justify-center gap-2 rounded-full bg-zinc-800 p-2 font-semibold text-white;
+}
+
+.LogWithGoogleButton {
+  @apply flex w-full items-center justify-center gap-2 rounded-full border-4 border-zinc-800 bg-transparent p-2 font-bold text-black;
 }

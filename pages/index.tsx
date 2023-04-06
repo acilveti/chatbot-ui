@@ -14,25 +14,47 @@ const Welcome = () => {
     });
 
   return (
-    <div className={styles.authenticationBackground}>
-      <div className="Titles">
-        <div className="Title">
-          <h1>Create an Account</h1>
+    <div className={styles.Screen}>
+      <div className={styles.AuthenticationContainer}>
+        <div className={styles.Titles}>
+          <div className="Title">
+            <h1 className="text-4xl font-extrabold dark:text-white">
+              Create an Account
+            </h1>
+          </div>
+          <div className="text-xl font-bold dark:text-white">
+            <h2>Let's get started</h2>
+          </div>
         </div>
-        <div className="subTitles">
-          <h2>Let's get started</h2>
+        <div className={styles.FormContainer}>
+          <input
+            className={styles.Input}
+            type="text"
+            name="username"
+            placeholder="Username"
+            onChange={handleChange}
+          />
+          <input
+            className={styles.Input}
+            type="text"
+            name="email"
+            placeholder="Email"
+            onChange={handleChange}
+          />
+          <input
+            className={styles.Input}
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+          />
         </div>
-      </div>
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="username" onChange={handleChange} />
-          <input type="text" name="email" onChange={handleChange} />
-          <input type="password" name="password" onChange={handleChange} />
-        </form>
-      </div>
-      <div className="buttons">
-        <button className="btn">Sign Up</button>
-        <button className="btn">Sign In</button>
+        <div className={styles.ButtonsContainer}>
+          <button className={styles.LogButton}>Create an account</button>
+          <button className={styles.LogWithGoogleButton}>
+            Sign up with Google
+          </button>
+        </div>
       </div>
     </div>
   );
