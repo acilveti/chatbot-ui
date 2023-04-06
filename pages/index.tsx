@@ -8,6 +8,7 @@ const Welcome = () => {
     useFormik({
       initialValues: { username: '', email: '', password: '' },
       onSubmit: (values) => {
+        console.log('asdfa');
         console.log(values);
       },
       validationSchema,
@@ -26,35 +27,51 @@ const Welcome = () => {
             <h2>Let's get started</h2>
           </div>
         </div>
-        <div className={styles.FormContainer}>
-          <input
-            className={styles.Input}
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={handleChange}
-          />
-          <input
-            className={styles.Input}
-            type="text"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-          />
-          <input
-            className={styles.Input}
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-          />
-        </div>
-        <div className={styles.ButtonsContainer}>
-          <button className={styles.LogButton}>Create an account</button>
-          <button className={styles.LogWithGoogleButton}>
-            Sign up with Google
-          </button>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.FormContainer}>
+            <input
+              className={styles.Input}
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={handleChange}
+              onBlur={() => setFieldTouched('username')}
+            />
+            {touched.username && errors.username && (
+              <div className={styles.Error}>{errors.username}</div>
+            )}
+            <input
+              className={styles.Input}
+              type="text"
+              name="email"
+              placeholder="Email"
+              onChange={handleChange}
+              onBlur={() => setFieldTouched('email')}
+            />
+            {touched.email && errors.email && (
+              <div className={styles.Error}>{errors.email}</div>
+            )}
+            <input
+              className={styles.Input}
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              onBlur={() => setFieldTouched('password')}
+            />
+            {touched.password && errors.password && (
+              <div className={styles.Error}>{errors.password}</div>
+            )}
+          </div>
+          <div className={styles.ButtonsContainer}>
+            <button className={styles.LogButton} type="submit">
+              Create an account
+            </button>
+            <button className={styles.LogWithGoogleButton} type="button">
+              Sign up with Google
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
@@ -65,7 +82,6 @@ export default Welcome;
 const validationSchema = Yup.object().shape({
   username: Yup.string()
     .required('Username is a required field')
-    .email('Invalid username format')
     .label('Username'),
   email: Yup.string()
     .required('Email is a required field')
