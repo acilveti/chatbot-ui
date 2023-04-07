@@ -2,14 +2,22 @@ import React from 'react';
 import styles from '../styles/authentication.module.css';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
+import auth from './api/auth.js';
+import { useRouter } from 'next/router';
 
 const Welcome = () => {
+  const router = useRouter();
   const { handleChange, handleSubmit, errors, setFieldTouched, touched } =
     useFormik({
       initialValues: { username: '', email: '', password: '' },
-      onSubmit: (values) => {
-        console.log('asdfa');
+      onSubmit: async (values) => {
         console.log(values);
+        if ((await auth.register(values)) === true) {
+          console.log('Success');
+          router.push('/home');
+        } else {
+          console.log('Failure');
+        }
       },
       validationSchema,
     });

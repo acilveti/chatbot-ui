@@ -279,6 +279,7 @@ const Home: React.FC<HomeProps> = ({
   const handleApiKeyChange = (apiKey: string) => {
     setApiKey(apiKey);
     localStorage.setItem('apiKey', apiKey);
+    // write in the database.
   };
 
   const handleToggleChatbar = () => {
@@ -564,6 +565,8 @@ const Home: React.FC<HomeProps> = ({
       fetchModels(apiKey);
     } else if (serverSideApiKeyIsSet) {
       fetchModels('');
+    } else {
+      //modify here to get the key from the database.
     }
 
     if (window.innerWidth < 640) {
