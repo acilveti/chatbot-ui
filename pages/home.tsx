@@ -34,6 +34,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import api_key from './api/api_key';
 
 interface HomeProps {
   serverSideApiKeyIsSet: boolean;
@@ -279,7 +280,8 @@ const Home: React.FC<HomeProps> = ({
   const handleApiKeyChange = (apiKey: string) => {
     setApiKey(apiKey);
     localStorage.setItem('apiKey', apiKey);
-    // write in the database.
+    // postAPIKey;
+    api_key.postApiKey(apiKey);
   };
 
   const handleToggleChatbar = () => {
@@ -566,7 +568,10 @@ const Home: React.FC<HomeProps> = ({
     } else if (serverSideApiKeyIsSet) {
       fetchModels('');
     } else {
-      //modify here to get the key from the database.
+      api_key.getApiKey().then((apiKey) => {
+        setApiKey(apiKey);
+        fetchModels(apiKey);
+      });
     }
 
     if (window.innerWidth < 640) {

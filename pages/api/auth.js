@@ -1,14 +1,12 @@
 const register = async (values) => {
-  const response = await fetch(
-    'https://a7b9-47-63-116-234.eu.ngrok.io/register',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
+  const response = await fetch('http://localhost:8000/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
     },
-  );
+    body: JSON.stringify(values),
+    credentials: 'include',
+  });
 
   if (!response.ok) {
     return false;

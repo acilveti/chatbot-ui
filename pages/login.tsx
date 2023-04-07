@@ -9,7 +9,7 @@ const Welcome = () => {
   const router = useRouter();
   const { handleChange, handleSubmit, errors, setFieldTouched, touched } =
     useFormik({
-      initialValues: { username: '', email: '', password: '' },
+      initialValues: { username: '', password: '' },
       onSubmit: async (values) => {
         console.log(values);
         if ((await auth.register(values)) === true) {
@@ -22,13 +22,13 @@ const Welcome = () => {
       validationSchema,
     });
 
-  const goToLoginPage = () => {
-    router.push('/login');
+  const goSignupPage = () => {
+    router.push('/');
   };
 
   return (
     <div className={styles.Screen}>
-      <span onClick={goToLoginPage} style={{ cursor: 'pointer' }}>
+      <span onClick={goSignupPage} style={{ cursor: 'pointer' }}>
         Go to another page
       </span>
 
@@ -55,17 +55,6 @@ const Welcome = () => {
             />
             {touched.username && errors.username && (
               <div className={styles.Error}>{errors.username}</div>
-            )}
-            <input
-              className={styles.Input}
-              type="text"
-              name="email"
-              placeholder="Email"
-              onChange={handleChange}
-              onBlur={() => setFieldTouched('email')}
-            />
-            {touched.email && errors.email && (
-              <div className={styles.Error}>{errors.email}</div>
             )}
             <input
               className={styles.Input}
@@ -99,10 +88,6 @@ const validationSchema = Yup.object().shape({
   username: Yup.string()
     .required('Username is a required field')
     .label('Username'),
-  email: Yup.string()
-    .required('Email is a required field')
-    .email('Invalid email format')
-    .label('Email'),
   password: Yup.string()
     .required('Password is a required field')
     .min(4)
