@@ -26,8 +26,8 @@ const getApiKey = async (): Promise<string> => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      credentials: 'same-origin',
     },
+    credentials: 'include',
   });
 
   if (!response.ok) {

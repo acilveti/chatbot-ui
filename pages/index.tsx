@@ -28,22 +28,24 @@ const Welcome = () => {
 
   return (
     <div className={styles.Screen}>
-      <span onClick={goToLoginPage} style={{ cursor: 'pointer' }}>
-        Go to another page
-      </span>
-
       <div className={styles.AuthenticationContainer}>
         <div className={styles.Titles}>
+          <h1 className="text-4xl font-extrabold text-indigo-900 dark:text-white">
+            CheapGPT
+          </h1>
+          <div></div>
+        </div>
+        <div className={styles.Titles}>
           <div className="Title">
-            <h1 className="text-4xl font-extrabold dark:text-white">
-              Create an Account
+            <h1 className="text-2xl font-extrabold dark:text-white">
+              Login to an Account
             </h1>
           </div>
           <div className="text-xl font-bold dark:text-white">
             <h2>Let's get started</h2>
           </div>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.FormContainer} onSubmit={handleSubmit}>
           <div className={styles.FormContainer}>
             <input
               className={styles.Input}
@@ -87,6 +89,13 @@ const Welcome = () => {
               Sign up with Google
             </button>
           </div>
+          <span
+            className={styles.Link}
+            onClick={goToLoginPage}
+            style={{ cursor: 'pointer' }}
+          >
+            Already have an account? <span className="text-red-600">Login</span>
+          </span>
         </form>
       </div>
     </div>

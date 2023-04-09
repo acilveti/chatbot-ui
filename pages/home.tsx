@@ -562,17 +562,34 @@ const Home: React.FC<HomeProps> = ({
     }
 
     const apiKey = localStorage.getItem('apiKey');
+    console.log('this is the api key', apiKey);
     if (apiKey) {
-      setApiKey(apiKey);
-      fetchModels(apiKey);
-    } else if (serverSideApiKeyIsSet) {
-      fetchModels('');
-    } else {
+      console.log('getApiKey');
       api_key.getApiKey().then((apiKey) => {
+        console.log(apiKey);
         setApiKey(apiKey);
         fetchModels(apiKey);
+        setApiKey(apiKey);
+        localStorage.setItem('apiKey', apiKey);
+        //  console.log("apiKey");
+        // setApiKey(apiKey);
+        // fetchModels(apiKey);
+      });
+    } else {
+      console.log('getApiKey --  apikeynull');
+      api_key.getApiKey().then((apiKey) => {
+        console.log(apiKey);
+        setApiKey(apiKey);
+        fetchModels(apiKey);
+        setApiKey(apiKey);
+        localStorage.setItem('apiKey', apiKey);
       });
     }
+    // // else if (serverSideApiKeyIsSet) {
+    //   //   fetchModels('');
+    //   //   console.log("serverSideApiKeyIsSet");
+    // }
+    //}
 
     if (window.innerWidth < 640) {
       setShowSidebar(false);

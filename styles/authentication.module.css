@@ -3,7 +3,7 @@
 }
 
 .AuthenticationContainer {
-  @apply flex h-full max-h-auth w-1/2 max-w-xl flex-col items-center justify-center gap-10 border-4 bg-white p-10;
+  @apply flex h-full max-h-auth w-4/6 max-w-xl flex-col items-center justify-center gap-10 border-4 bg-white p-10;
 }
 
 .Titles {
@@ -28,4 +28,8 @@
 
 .LogWithGoogleButton {
   @apply flex w-full items-center justify-center gap-2 rounded-full border-4 border-zinc-800 bg-transparent p-2 font-bold text-black;
+}
+
+.Link {
+  @apply mt-2 inline-block cursor-pointer font-bold text-zinc-600 underline;
 }
