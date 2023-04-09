@@ -42,7 +42,7 @@ const Welcome = () => {
             </h1>
           </div>
           <div className="text-xl font-bold dark:text-white">
-            <h2>Let's get started</h2>
+            <h2>Let&apos;s get started</h2>
           </div>
         </div>
         <form className={styles.FormContainer} onSubmit={handleSubmit}>
