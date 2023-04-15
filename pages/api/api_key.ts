@@ -1,4 +1,5 @@
-const api_url = 'http://localhost:8000/';
+const api_url =
+  'http://load-balancer3-1756323403.eu-north-1.elb.amazonaws.com/';
 
 const postApiKey = async (values: string) => {
   const response = await fetch(api_url + 'api_key_post', {
@@ -31,7 +32,7 @@ const getApiKey = async (): Promise<string> => {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch API key');
+    return 'example_key';
   } else {
     const data: ApiResponse = await response.json();
     return data.api_key;
